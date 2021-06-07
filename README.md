@@ -2,7 +2,7 @@
 
 ## User Story
 
-```As a user who plays sports
+``As a user who plays sports
 I WANT an app that can follow local teams 
 SO THAT i can view my games and my friends games
 WHEN i click on a teams name

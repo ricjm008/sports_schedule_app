@@ -1,0 +1,5 @@
+-- DROP DATABASE
+DROP DATABASE IF EXISTS sports_schedule_db;
+
+-- CREATE DATABASE
+CREATE DATABASE sports_schedule_db;

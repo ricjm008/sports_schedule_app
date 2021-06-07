@@ -1,4 +1,4 @@
-# sports_schedule_app
+# Sports Scheduler
 
 ## User Story
 

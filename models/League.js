@@ -1,24 +1,15 @@
-const bcrypt = require('bcryptjs');
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class User extends Model {
-    validPassword(password) {
-        return bcrypt.compareSync(password, this.password);
-    }
-}
+class League extends Model {}
 
 // Remember id, created_date, updated_date columns are created for you.
-User.init(
+League.init(
     {
         name: {
             type: DataTypes.STRING,
             allowNull: false,
-        },
-        password: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
+        }
     },
     {
         // Hooks are automatic methods that run during various phases of the User Model lifecycle
@@ -29,4 +20,4 @@ User.init(
     }
 );
 
-module.exports = User;
+module.exports = League;

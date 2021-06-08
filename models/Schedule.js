@@ -1,15 +1,10 @@
-const bcrypt = require('bcryptjs');
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class User extends Model {
-    validPassword(password) {
-        return bcrypt.compareSync(password, this.password);
-    }
-}
+class Schedule extends Model {}
 
 // Remember id, created_date, updated_date columns are created for you.
-User.init(
+Schedule.init(
     {
         name: {
             type: DataTypes.STRING,
@@ -25,4 +20,4 @@ User.init(
     }
 );
 
-module.exports = User;
+module.exports = Schedule;

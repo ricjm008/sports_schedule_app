@@ -27,6 +27,11 @@ User.init(
             type: DataTypes.STRING,
             allowNull: false,
         },
+        is_admin: {
+            type: DataTypes.BOOLEAN,
+            allowNull: false,
+            defaultValue: false
+        }
     },
     {
         // Hooks are automatic methods that run during various phases of the User Model lifecycle

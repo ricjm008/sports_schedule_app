@@ -1,25 +1,21 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class League extends Model {}
+class UserFollowing extends Model {}
 
 // Remember id, created_date, updated_date columns are created for you.
-League.init(
+UserFollowing.init(
     {
         name: {
             type: DataTypes.STRING,
             allowNull: false,
-        },
-        season: {
-            type: DataTypes.STRING,
-            allowNull: true
         }
     },
     {
         hooks: {},
         sequelize,
-        modelName: 'league',
+        modelName: 'userfollowing',
     }
 );
 
-module.exports = League;
+module.exports = UserFollowing;

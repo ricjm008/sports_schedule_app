@@ -14,16 +14,12 @@ TeamRecord.init(
                 key: 'id'
             }
         },
-        wins: {
+        game_id: {
             type: DataTypes.INTEGER,
             allowNull: true,
         },
-        losses: {
-            type: DataTypes.INTEGER,
-            allowNull: true
-        },
-        ties: {
-            type: DataTypes.INTEGER,
+        result: {
+            type: DataTypes.STRING,
             allowNull: true
         }
         

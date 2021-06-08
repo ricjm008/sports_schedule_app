@@ -28,6 +28,14 @@ Score.init(
         },
         a_score: {
             type: DataTypes.NUMBER
+        },
+        game_id: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            references: {
+                model: 'game',
+                key: 'id'
+            }
         }
         
     },

@@ -1,10 +1,10 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Game extends Model {}
+class Score extends Model {}
 
 // Remember id, created_date, updated_date columns are created for you.
-Game.init(
+Score.init(
     {
         h_team_id: {
             type: DataTypes.INTEGER,
@@ -22,24 +22,28 @@ Game.init(
                 key: 'id'
             }
         },
-        date_time: {
+        h_score: {
+            type: DataTypes.NUMBER,
+
+        },
+        a_score: {
+            type: DataTypes.NUMBER
+        },
+        game_id: {
             type: DataTypes.INTEGER,
             allowNull: false,
-        },
-        league_id: {
-            type: DataTypes.INTEGER,
-            allowNull: true,
             references: {
-                model: 'league',
+                model: 'game',
                 key: 'id'
             }
         }
+        
     },
     {
         hooks: {},
         sequelize,
-        modelName: 'game',
+        modelName: 'score',
     }
 );
 
-module.exports = Game;
+module.exports = Score;

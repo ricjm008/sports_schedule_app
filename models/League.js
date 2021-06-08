@@ -12,8 +12,6 @@ League.init(
         }
     },
     {
-        // Hooks are automatic methods that run during various phases of the User Model lifecycle
-        // In this case, before a User is created/updated, we will automatically hash their password
         hooks: {},
         sequelize,
         modelName: 'league',

@@ -10,7 +10,7 @@ Team.init(
             type: DataTypes.STRING,
             allowNull: false,
         },
-        league: {
+        league_id: {
             type: DataTypes.INTEGER,
             allowNull: false,
             references: {
@@ -22,11 +22,12 @@ Team.init(
             type: DataTypes.BLOB,
 
         },
-
+        location: {
+            type: DataTypes.STRING,
+            allowNull: true
+        }
     },
     {
-        // Hooks are automatic methods that run during various phases of the User Model lifecycle
-        // In this case, before a User is created/updated, we will automatically hash their password
         hooks: {},
         sequelize,
         modelName: 'team',

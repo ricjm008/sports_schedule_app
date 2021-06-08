@@ -1,12 +1,12 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Score extends Model {}
+class TeamRecord extends Model {}
 
 // Remember id, created_date, updated_date columns are created for you.
-Score.init(
+TeamRecord.init(
     {
-        h_team_id: {
+        team_id: {
             type: DataTypes.INTEGER,
             allowNull: false,
             references: {
@@ -14,28 +14,25 @@ Score.init(
                 key: 'id'
             }
         },
-        a_team_id: {
+        wins: {
             type: DataTypes.INTEGER,
-            allowNull: false,
-            references: {
-                model: 'team',
-                key: 'id'
-            }
+            allowNull: true,
         },
-        h_score: {
-            type: DataTypes.NUMBER,
-
+        losses: {
+            type: DataTypes.INTEGER,
+            allowNull: true
         },
-        a_score: {
-            type: DataTypes.NUMBER
+        ties: {
+            type: DataTypes.INTEGER,
+            allowNull: true
         }
         
     },
     {
         hooks: {},
         sequelize,
-        modelName: 'score',
+        modelName: 'teamrecord',
     }
 );
 
-module.exports = Score;
+module.exports = TeamRecord;

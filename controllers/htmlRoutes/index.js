@@ -59,4 +59,11 @@ router.get("/dashboard", withAuth, (req, res) => {
   });
 });
 
+router.get('/team', (req, res) => {
+    res.render('teampage', {
+        user: req.session.user,
+        loggedIn: req.session.loggedIn,
+    });
+});
+
 module.exports = router;

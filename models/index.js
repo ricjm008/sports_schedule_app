@@ -1,21 +1,26 @@
 const User = require('./user');
-const Game = require('./Game');
 const League = require('./League');
-const Schedule = require('./Schedule');
 const Team = require('./Team');
-const Score = require('./Score');
+const Game = require('./Game');
+const Schedule = require('./Schedule');
 const UserFollowing = require('./UserFollowing');
 const TeamRecord = require('./TeamRecord');
-User.belongsToMany(Team, { through: { model: UserFollowing, unique: false }});
-Team.belongsToMany(User, { through: { model: UserFollowing, unique: false }});
-Team.belongsTo(League, { foreignKey: 'league_id' });
-Score.belongsTo(Game, { foreignKey: 'game_id' });
-Team.belongsToMany(Game, { through: {model: TeamRecord, unique: false }});
-Game.belongsToMany(Team, { through: {model: TeamRecord, unique: false }});
+
+User.belongsToMany(Team, { through: UserFollowing, foreignKey: 'userId' });
+Team.belongsToMany(User, { through: UserFollowing, foreignKey: 'teamId' });
+Team.belongsToMany(Game, { through: TeamRecord, foreignKey: 'teamId' });
+Game.belongsToMany(Team, { through: TeamRecord,  foreignKey: 'gameId' });
+Team.belongsTo(League);
+League.hasMany(Team);
+Game.belongsTo(Schedule);
+Schedule.hasMany(Game);
+
 module.exports = {
     User,
     Game,
     League,
     Schedule,
-    Team
+    Team,
+    UserFollowing,
+    TeamRecord
 };

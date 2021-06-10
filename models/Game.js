@@ -23,7 +23,7 @@ Game.init(
             }
         },
         date_time: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.DATE,
             allowNull: false,
         },
         league_id: {
@@ -38,6 +38,7 @@ Game.init(
     {
         hooks: {},
         sequelize,
+        freezeTableName: true,
         modelName: 'game',
     }
 );

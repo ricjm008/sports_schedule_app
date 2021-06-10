@@ -10,18 +10,6 @@ Team.init(
             type: DataTypes.STRING,
             allowNull: false,
         },
-        league_id: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            references: {
-                model: 'league',
-                key: 'id'
-            }
-        },
-        logo: {
-            type: DataTypes.BLOB,
-
-        },
         location: {
             type: DataTypes.STRING,
             allowNull: true
@@ -30,6 +18,7 @@ Team.init(
     {
         hooks: {},
         sequelize,
+        freezeTableName: true,
         modelName: 'team',
     }
 );

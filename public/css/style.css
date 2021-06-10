@@ -3,7 +3,11 @@ form.login {
   margin-top: 50px;
 }
 
-* {
+/* * {
   font-family: "Courier New", Courier, monospace;
-}
+} */
 /* change font */
+
+a.signupLink:hover {
+  text-decoration: underline;
+}

@@ -2,8 +2,6 @@ form.signup,
 form.login {
   margin-top: 50px;
 }
-<<<<<<< HEAD
-=======
 
 /* * {
   font-family: "Courier New", Courier, monospace;
@@ -13,4 +11,3 @@ form.login {
 a.signupLink:hover {
   text-decoration: underline;
 }
->>>>>>> origin/main

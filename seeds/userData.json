@@ -1,5 +1,8 @@
 [
   {
-    
+    "email":"admin@admin.com",
+    "name":"admin",
+    "password":"",
+    "isAdmin":"true"
   }
 ]

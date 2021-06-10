@@ -1,21 +1,27 @@
 const sequelize = require('../config/connection');
-const { User } = require('../models');
+const { User, League, Team, Game, Schedule, UserFollowing, TeamRecord } = require('../models');
 
 const userData = require('./userData.json');
-// const projectData = require('./projectData.json');
-
+const { leagueData, teamData } = require('./teams-seeds');
+const { gameData } = require('./games-seeds');
 const seedDatabase = async () => {
     await sequelize.sync({ force: true });
-
-    const users = await User.bulkCreate(userData, {
+    const leagues = await League.bulkCreate(leagueData, {
         individualHooks: true,
         returning: true,
     });
-
-    // for (const project of projectData) {
-    //     await Project.create({
-    //         ...project,
-    //         user_id: users[Math.floor(Math.random() * users.length)].id,
+    const teams = await Team.bulkCreate(teamData, {
+        individualHooks: true,
+        returning: true,
+    });
+    const games = await Game.bulkCreate(gameData, {
+        individualHooks: true,
+        returning: true,
+    });
+    // for (const team of teamData) {
+    //     await Team.create({
+    //         ...team,
+    //         id: teams[Math.floor(Math.random() * teams.length)].id,
     //     });
     // }
 

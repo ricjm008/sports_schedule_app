@@ -49,13 +49,13 @@ router.get("/signup", (req, res) => {
 // If a user who is not logged in tries to access this route they will be redirected to the signup page
 router.get("/dashboard", withAuth, (req, res) => {
   console.log(req.session.user);
-  const teams = await Team.find({
-    where: {},
-  });
+  //   const teams = await Team.find({
+  //     where: {},
+  //   });
   res.render("dashboard", {
     user: req.session.user,
     loggedIn: req.session.loggedIn,
-    followingTeams: [{}],
+    // followingTeams: [{}],
   });
 });
 

@@ -14,6 +14,7 @@ Schedule.init(
     {
         hooks: {},
         sequelize,
+        freezeTableName: true,
         modelName: 'schedule',
     }
 );

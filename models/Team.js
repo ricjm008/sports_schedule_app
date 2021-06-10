@@ -13,6 +13,10 @@ Team.init(
         location: {
             type: DataTypes.STRING,
             allowNull: true
+        },
+        logo: {
+            type: DataTypes.BLOB,
+            allowNull: true
         }
     },
     {

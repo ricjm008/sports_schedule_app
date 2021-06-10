@@ -66,4 +66,12 @@ router.get('/team', (req, res) => {
     });
 });
 
+router.get('/schedule', (req, res) => {
+    res.render('schedule', {
+        user: req.session.user,
+        loggedIn: req.session.loggedIn,
+
+    });
+});
+
 module.exports = router;

@@ -21,7 +21,7 @@ Team.init(
             allowNull: true
         },
         logo: {
-            type: DataTypes.BLOB,
+            type: DataTypes.STRING,
             allowNull: true
         }
     },

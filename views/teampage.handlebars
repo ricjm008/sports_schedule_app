@@ -1,5 +1,5 @@
-<div class="mb-20 mt-8 ml-10 text-4xl font-semibold ">
-    <h1>{{team.name}}</h1>
+<div class="flex mb-20 mt-8 ml-10 text-4xl font-semibold ">
+    <h1 class="flex">{{team.name}}</h1> <button id="follow-button" class="flex ml-5 inline-block align-middle">+ Follow</button>	
 </div>
 
 {{#each teamGames as |game|}}
@@ -7,3 +7,5 @@
   {{>game}}
 
 {{/each}}
+
+<script type="text/javascript" src="/js/followButton.js"></script>

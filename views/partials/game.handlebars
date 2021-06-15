@@ -1,21 +1,28 @@
- <div class="">picture</div>
-        {{!-- picture query --}}
-    <div class="">
-        <span class="text-center ml-10 mr-10 text-3xl inline-block align-middle">Team 3</span> 
+
+<div class="flex items-start justify-around border-solid bg-white p-4 rounded-lg w-full mb-8 lg:w-2/3">
+    <div class="rounded-full overflow-hidden"><img src="https://via.placeholder.com/75x75" width="75px" alt=""></div>
+    {{!-- picture query --}}
+    <div class=" items-center ">
+        {{!-- left --}}
+        <span class="text-center ml-8 mr-8 text-3xl inline-block align-middle">{{homeTeam}}</span>
+
         {{!-- name query --}}
     </div>
-    <div class="">
-        <p class="text-center">9/06/21  2:15pm</p> 
+
+    {{!-- middle --}}
+    <div class=" justify-center items-center">
+        <p class="text-center">9/06/21 2:15pm</p>
         {{!-- time query--}}
         <p class="text-center text-3xl font-extrabold">VS</p>
-        
         <p class="text-center">Sacred Heart College Oval</p>
         {{!-- location query --}}
-    </div>       
-    <div class="">
-        <span class="text-center ml-10 mr-10 text-3xl inline-block align-middle">Team 2</span>
+    </div>
+
+    {{!-- right --}}
+    <div class=" items-center">
+        <span class="text-center ml-8 mr-8 text-3xl inline-block align-middle">{{awayTeam}}</span>
         {{!-- name query --}}
     </div>
-    <div class="">picture</div>
-    {{!-- picture query --}}
+    <div class="rounded-full overflow-hidden"><img src="https://via.placeholder.com/75x75" alt=""></div>
+
 </div>

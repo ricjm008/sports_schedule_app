@@ -1,5 +1,7 @@
 // Requiring path to so we can use relative routes to our HTML files
 const express = require("express");
+const { Op } = require("sequelize");
+const { Team, Game, TeamRecord } = require("../../models");
 // Requiring our custom middleware for checking if a user is logged in
 const withAuth = require("../../utils/withAuth");
 const router = express.Router();
@@ -55,15 +57,34 @@ router.get("/dashboard", withAuth, (req, res) => {
   res.render("dashboard", {
     user: req.session.user,
     loggedIn: req.session.loggedIn,
-    // followingTeams: [{}],
+    upcomingGames: [
+      {
+        homeTeam: "Crows",
+        awayTeam: "Power",
+      },
+      {
+        homeTeam: "Hawthorn",
+        awayTeam: "Brisbane",
+      },
+    ],
+    pastGames: [
+      {
+        homeTeam: "Crows",
+        awayTeam: "Power",
+      },
+      {
+        homeTeam: "Hawthorn",
+        awayTeam: "Brisbane",
+      },
+    ],
   });
 });
 
-router.get('/team', (req, res) => {
-    res.render('teampage', {
-        user: req.session.user,
-        loggedIn: req.session.loggedIn,
-    });
+router.get("/team", (req, res) => {
+  res.render("teampage", {
+    user: req.session.user,
+    loggedIn: req.session.loggedIn,
+  });
 });
 
 router.get('/schedule', (req, res) => {
@@ -73,5 +94,35 @@ router.get('/schedule', (req, res) => {
 
     });
 });
+
+router.get('/team/:id', async (req, res) => {
+  try {
+  // Search the database for a dish with an id that matches params
+  const teamData = await Team.findByPk(req.params.id);
+  const teamGamesData = await Game.findAll({
+    where: {
+      [Op.or]: [{h_team_id: req.params.id}, {a_team_id: req.params.id}]
+    },
+    include: {model: Team, through: TeamRecord }
+  });
+
+  const teamGames = teamGamesData.map((g) => g.get({plain: true}))
+  const team = teamData.get({ plain: true });
+
+  console.log({team, teamGames})
+
+
+  res.render('teampage', {
+    user: req.session.user,
+    loggedIn: req.session.loggedIn,
+    team,
+    teamGames
+});
+  } catch (err) {
+      res.status(500).json(err);
+  }
+});
+
+
 
 module.exports = router;

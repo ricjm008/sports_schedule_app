@@ -103,11 +103,12 @@ router.get('/team/:id', async (req, res) => {
     where: {
       [Op.or]: [{h_team_id: req.params.id}, {a_team_id: req.params.id}]
     },
-    include: {model: Team, through: TeamRecord }
+    include: {model: Team}
   });
 
   const teamGames = teamGamesData.map((g) => g.get({plain: true}))
   const team = teamData.get({ plain: true });
+  const teamGameteamsData = await Team.findByPk(teamGames)
 
   console.log({team, teamGames})
 

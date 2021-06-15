@@ -18,6 +18,10 @@ const seedDatabase = async () => {
         individualHooks: true,
         returning: true,
     });
+    const games = await Game.bulkCreate(gameData, {
+        individualHooks: true,
+        returning: true,
+    });
     // for (const team of teamData) {
     //     await Team.create({
     //         ...team,

@@ -4,5 +4,23 @@
     "name":"admin",
     "password":"",
     "isAdmin":"true"
+  },
+  {
+    "email":"jared@jared.com",
+    "name":"jared",
+    "password":"",
+    "isAdmin":"true"
+  },
+  {
+    "email":"peter@peter.com",
+    "name":"peter",
+    "password":"",
+    "isAdmin":"true"
+  },
+  {
+    "email":"tom@tom.com",
+    "name":"tom",
+    "password":"",
+    "isAdmin":"true"
   }
 ]

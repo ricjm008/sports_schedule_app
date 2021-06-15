@@ -1,12 +1,14 @@
+/* tom  */
+* {
+  margin: 0px;
+  padding: 0px;
+  transition: 0.2s;
+}
+
 form.signup,
 form.login {
   margin-top: 50px;
 }
-
-/* * {
-  font-family: "Courier New", Courier, monospace;
-} */
-/* change font */
 
 a.signupLink:hover {
   text-decoration: underline;

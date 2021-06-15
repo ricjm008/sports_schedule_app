@@ -55,15 +55,34 @@ router.get("/dashboard", withAuth, (req, res) => {
   res.render("dashboard", {
     user: req.session.user,
     loggedIn: req.session.loggedIn,
-    // followingTeams: [{}],
+    upcomingGames: [
+      {
+        homeTeam: "Crows",
+        awayTeam: "Power",
+      },
+      {
+        homeTeam: "Hawthorn",
+        awayTeam: "Brisbane",
+      },
+    ],
+    pastGames: [
+      {
+        homeTeam: "Crows",
+        awayTeam: "Power",
+      },
+      {
+        homeTeam: "Hawthorn",
+        awayTeam: "Brisbane",
+      },
+    ],
   });
 });
 
-router.get('/team', (req, res) => {
-    res.render('teampage', {
-        user: req.session.user,
-        loggedIn: req.session.loggedIn,
-    });
+router.get("/team", (req, res) => {
+  res.render("teampage", {
+    user: req.session.user,
+    loggedIn: req.session.loggedIn,
+  });
 });
 
 router.get('/schedule', (req, res) => {

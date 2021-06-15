@@ -1,6 +1,6 @@
 
 <div class="flex items-start justify-around border-solid bg-white p-4 rounded-lg w-full mb-8 lg:w-2/3">
-    <div class="rounded-full overflow-hidden"><img src="https://via.placeholder.com/75x75" width="75px" alt=""></div>
+    <div class="rounded-full overflow-hidden"><img src="/public/images/{{homeTeam.logo}}" width="75px" alt="{{homeTeam.logo}}"></div>
     {{!-- picture query --}}
     <div class=" items-center ">
         {{!-- left --}}
@@ -11,18 +11,18 @@
 
     {{!-- middle --}}
     <div class=" justify-center items-center">
-        <p class="text-center">9/06/21 2:15pm</p>
+        <p class="text-center">{{game.date_time}}</p>
         {{!-- time query--}}
         <p class="text-center text-3xl font-extrabold">VS</p>
-        <p class="text-center">Sacred Heart College Oval</p>
+        <p class="text-center">{{homeTeam.location}}</p>
         {{!-- location query --}}
     </div>
 
     {{!-- right --}}
     <div class=" items-center">
-        <span class="text-center ml-8 mr-8 text-3xl inline-block align-middle">{{awayTeam}}</span>
+        <span class="text-center ml-8 mr-8 text-3xl inline-block align-middle">{{awayTeam.name}}</span>
         {{!-- name query --}}
     </div>
-    <div class="rounded-full overflow-hidden"><img src="https://via.placeholder.com/75x75" alt=""></div>
+    <div class="rounded-full overflow-hidden"><img src="/public/images/{{awayTeam.logo}}" alt="{{awayTeam.logo}}"></div>
 
 </div>

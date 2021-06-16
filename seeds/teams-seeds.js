@@ -8,31 +8,31 @@ const teamData = [
     {
         name: "Crazy Frogs",
         location: "Funky Town Stadium",
-        logo: 0,
+        logo: "crazyfrog.png",
         leagueId: 1
     },
     {
         name: "New York Knicks",
         location: "Madison Square Gardens",
-        logo: 0,
+        logo: "knicks.png",
         leagueId: 1
     },
     {
         name: "Justice League",
         location: "Metropolis",
-        logo: 0,
+        logo: "justiceleague.png",
         leagueId: 1
     },
     {
         name: "Red Hot Chilli Peppers",
         location: "Flavortown",
-        logo: 0,
+        logo: "rchp.png",
         leagueId: 1
     },
     {
         name: "Tasmanian Tigers",
         location: "Australian National Museum",
-        logo: 0,
+        logo: "tiger.png",
         leagueId: 1
     },
 ]

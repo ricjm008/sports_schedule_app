@@ -14,25 +14,9 @@ Game.init(
                 key: 'id'
             }
         },
-        a_team_id: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            references: {
-                model: 'team',
-                key: 'id'
-            }
-        },
         date_time: {
             type: DataTypes.DATE,
             allowNull: false,
-        },
-        league_id: {
-            type: DataTypes.INTEGER,
-            allowNull: true,
-            references: {
-                model: 'league',
-                key: 'id'
-            }
         }
     },
     {

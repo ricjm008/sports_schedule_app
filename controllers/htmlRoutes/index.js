@@ -96,33 +96,29 @@ router.get('/schedule', (req, res) => {
 });
 
 router.get('/team/:id', async (req, res) => {
-  try {
-  // Search the database for a dish with an id that matches params
-  const teamData = await Team.findByPk(req.params.id);
-  const teamGamesData = await Game.findAll({
-    where: {
-      [Op.or]: [{h_team_id: req.params.id}, {a_team_id: req.params.id}]
-    },
-    include: {model: Team}
+    try {
+      // Search the database for a dish with an id that matches params
+      const teamData = await Team.findByPk(req.params.id);
+      const teamGamesData = await Game.findAll({
+        include: [{ all: true, nested: true }]
+      });
+  
+      const teamGames = teamGamesData.map((g) => g.get({plain: true}))
+      const team = teamData.get({ plain: true });
+  
+      const filteredTeamGames = teamGames.filter(game => game.teams.some(t => t.id === team.id));
+  
+  
+        res.render('teampage', {
+          user: req.session.user,
+          loggedIn: req.session.loggedIn,
+          team,
+          teamGames: filteredTeamGames
+      });
+    } catch (err) {
+        res.status(500).json(err);
+    }
   });
-
-  const teamGames = teamGamesData.map((g) => g.get({plain: true}))
-  const team = teamData.get({ plain: true });
-  const teamGameteamsData = await Team.findByPk(teamGames)
-
-  console.log({team, teamGames})
-
-
-  res.render('teampage', {
-    user: req.session.user,
-    loggedIn: req.session.loggedIn,
-    team,
-    teamGames
-});
-  } catch (err) {
-      res.status(500).json(err);
-  }
-});
 
 
 

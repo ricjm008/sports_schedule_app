@@ -7,11 +7,12 @@ const TeamRecord = require('./TeamRecord');
 
 User.belongsToMany(Team, { through: UserFollowing, foreignKey: 'userId' });
 Team.belongsToMany(User, { through: UserFollowing, foreignKey: 'teamId' });
-Team.belongsToMany(Game, { through: TeamRecord, foreignKey: 'h_team_id' });
-Team.belongsToMany(Game, { through: TeamRecord, foreignKey: 'a_team_id' });
-Game.belongsToMany(Team, { through: TeamRecord,  foreignKey: 'gameId' });
+Team.belongsToMany(Game, { through: TeamRecord, foreignKey: 'teamId', uniqueKey: false });
+Game.belongsToMany(Team, { through: TeamRecord, foreignKey: 'gameId', uniqueKey: false });
 Team.belongsTo(League);
 League.hasMany(Team);
+Game.belongsTo(League);
+League.hasMany(Game);
 
 module.exports = {
     User,

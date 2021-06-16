@@ -18,7 +18,7 @@ const seedDatabase = async () => {
         individualHooks: true,
         returning: true,
     });
-    const games = await Game.bulkCreate(gameData, {
+    const users = await User.bulkCreate(userData, {
         individualHooks: true,
         returning: true,
     });

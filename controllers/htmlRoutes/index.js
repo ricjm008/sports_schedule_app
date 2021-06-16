@@ -87,12 +87,20 @@ router.get("/team", (req, res) => {
   });
 });
 
-router.get('/schedule', (req, res) => {
+router.get('/schedule', async (req, res) => {
+  try {
+    const gamesData = await Game.findAll({
+      include: [{ all: true, nested: true }]
+    });
+    const games = gamesData.get({ plain: true });
     res.render('schedule', {
         user: req.session.user,
         loggedIn: req.session.loggedIn,
-
+        games
     });
+  } catch (err) {
+    res.status(500).json(err);
+}
 });
 
 router.get('/team/:id', async (req, res) => {

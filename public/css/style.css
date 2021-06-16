@@ -13,3 +13,17 @@ form.login {
 a.signupLink:hover {
   text-decoration: underline;
 }
+
+#follow-button {
+  color: #3399FF;
+  font-family: "Helvetica";
+  font-size: 12pt;
+  background-color: #ffffff;
+  border: 1px solid;
+  border-color: #3399FF;
+  border-radius: 3px;
+  width: 85px;
+  height: 30px;
+  cursor: hand;
+  text-align: center;		    
+}

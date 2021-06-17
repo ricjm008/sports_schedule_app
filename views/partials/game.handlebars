@@ -1,10 +1,14 @@
-<div class="flex items-start justify-around w-full p-4 mb-8 bg-white border-solid rounded-lg lg:w-3/4">
-    <div class="overflow-hidden rounded-full"><img width="75" src="/images/{{teams.0.logo}}" alt="{{teams.0.logo}}"></div>
+<div
+    class="grid grid-modify justify-items-stretch justify-around w-full p-4 mb-8 bg-white border-solid rounded-lg lg:w-3/4">
+    <div class="overflow-hidden rounded-full self-start"><img width="80" src="/images/{{teams.0.logo}}"
+            alt="{{teams.0.logo}}">
+    </div>
     {{!-- picture --}}
     {{!-- left --}}
-    <div class="flex flex-col items-center ">
-        <span class="inline-block mx-6 text-2xl text-center align-middle"><a href="/team/{{teams.0.id}}">{{teams.0.name}}</a></span>
-        <span class="inline-block mx-6 text-2xl text-center align-middle">{{teams.0.teamrecord.result}}</span>
+    <div class="flex flex-col items-center justify-between">
+        <span class="inline-block text-2xl text-center align-middle"><a
+                href="/team/{{teams.0.id}}">{{teams.0.name}}</a></span>
+        <span class="inline-block text-2xl text-center justify-end">{{teams.0.teamrecord.result}}</span>
         {{!-- score --}}
     </div>
 
@@ -18,14 +22,17 @@
     </div>
 
     {{!-- right --}}
-    <div class="flex flex-col items-center ">
-        <span class="inline-block mx-6 text-2xl text-center align-middle"><a href="/team/{{teams.1.id}}">{{teams.1.name}}</a></span>
-        <span class="inline-block mx-6 text-2xl text-center align-middle">{{teams.1.teamrecord.result}}</span>
+    <div class="flex flex-col items-center justify-between">
+        <span class="inline-block text-2xl text-center align-middle"><a
+                href="/team/{{teams.1.id}}">{{teams.1.name}}</a></span>
+        <span class="inline-block text-2xl text-center justify-end">{{teams.1.teamrecord.result}}</span>
         {{!-- score --}}
 
 
     </div>
 
-    <div class="overflow-hidden rounded-full"><img width="75" src="/images/{{teams.1.logo}}" alt="{{teams.1.logo}}"></div>
+    <div class="overflow-hidden rounded-full self-start"><img width="80" src="/images/{{teams.1.logo}}"
+            alt="{{teams.1.logo}}">
+    </div>
     {{!-- picture --}}
 </div>

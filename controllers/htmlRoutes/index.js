@@ -11,19 +11,36 @@ const router = express.Router();
 
 router.get("/", async (req, res) => {
   try {
-    const gamesData = await Game.findAll({
-      include: [{ all: true, nested: true }],
-    });
-    const games = gamesData.map((g) => g.get({ plain: true }));
-    res.render("index", {
-      user: req.session.user,
-      loggedIn: req.session.loggedIn,
-      games,
-    });
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
+      const pastGamesData = await Game.findAll({
+        include: [{ all: true, nested: true }],
+        order: [["date_time", "ASC"]],
+        where: {
+          date_time: {
+            [Op.lt]: new Date(),
+          },
+        },
+      });
+      const upcomingGamesData = await Game.findAll({
+        include: [{ all: true, nested: true }],
+        order: [["date_time", "ASC"]],
+        where: {
+          date_time: {
+            [Op.gte]: new Date(),
+          },
+        },
+      });
+      const pastGames = pastGamesData.map((g) => g.get({ plain: true }));
+      const upcomingGames = upcomingGamesData.map((g) => g.get({ plain: true }));
+      // const pastGames = games.map((g) => g.date_time >= req.session.currentTime);
+      res.render("index", {
+        loggedIn: req.session.loggedIn,
+        pastGames,
+        upcomingGames,
+      });
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  });
 
 router.get("/login", (req, res) => {
   // If the user already has an account send them to the dashboard page

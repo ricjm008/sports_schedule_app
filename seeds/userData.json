@@ -2,25 +2,25 @@
   {
     "email":"admin@admin.com",
     "name":"admin",
-    "password":"password",
+    "password":"$2a$10$h9TuENOrgeYN9KbqiYWY0e1rOBnB4idgVtVBHnBosS67W0OMUxvAC",
     "isAdmin":"true"
   },
   {
     "email":"jared@jared.com",
     "name":"jared",
-    "password":"",
+    "password":"$2a$10$h9TuENOrgeYN9KbqiYWY0e1rOBnB4idgVtVBHnBosS67W0OMUxvAC",
     "isAdmin":"true"
   },
   {
-    "email":"peter@peter.com",
+    "email":"peterbruckner08@gmail.com",
     "name":"peter",
-    "password":"",
+    "password":"$2a$10$h9TuENOrgeYN9KbqiYWY0e1rOBnB4idgVtVBHnBosS67W0OMUxvAC",
     "isAdmin":"true"
   },
   {
     "email":"tom@tom.com",
     "name":"tom",
-    "password":"",
+    "password":"$2a$10$h9TuENOrgeYN9KbqiYWY0e1rOBnB4idgVtVBHnBosS67W0OMUxvAC",
     "isAdmin":"true"
   }
 ]

@@ -62,7 +62,7 @@ router.get("/signup", (req, res) => {
 // If a user who is not logged in tries to access this route they will be redirected to the signup page
 router.get("/dashboard", withAuth, async (req, res) => {
   const url = gravatar.url(req.session.user.email, {
-    s: "40",
+    s: "80",
     r: "pg",
     d: "404",
   });

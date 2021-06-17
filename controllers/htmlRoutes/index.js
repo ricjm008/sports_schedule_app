@@ -2,6 +2,8 @@
 const express = require("express");
 const { Op } = require("sequelize");
 const { Team, Game, TeamRecord } = require("../../models");
+const gravatar = require("../api/gravatar");
+
 // Requiring our custom middleware for checking if a user is logged in
 const withAuth = require("../../utils/withAuth");
 const router = express.Router();

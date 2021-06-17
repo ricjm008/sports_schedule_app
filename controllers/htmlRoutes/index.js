@@ -1,12 +1,13 @@
 // Requiring path to so we can use relative routes to our HTML files
 const express = require("express");
 const { Op } = require("sequelize");
-const { Team, Game, TeamRecord } = require("../../models");
+const { Team, Game, TeamRecord, UserFollowing } = require("../../models");
 const gravatar = require("gravatar");
 
 // Requiring our custom middleware for checking if a user is logged in
 const withAuth = require("../../utils/withAuth");
 const router = express.Router();
+
 
 router.get("/", async (req, res) => {
   try {
@@ -62,7 +63,7 @@ router.get("/signup", (req, res) => {
 // If a user who is not logged in tries to access this route they will be redirected to the signup page
 router.get("/dashboard", withAuth, async (req, res) => {
   const url = gravatar.url(req.session.user.email, {
-    s: "40",
+    s: "80",
     r: "pg",
     d: "404",
   });
@@ -100,13 +101,6 @@ router.get("/dashboard", withAuth, async (req, res) => {
   }
 });
 
-router.get("/team", (req, res) => {
-  res.render("teampage", {
-    user: req.session.user,
-    loggedIn: req.session.loggedIn,
-  });
-});
-
 router.get("/schedule", async (req, res) => {
   try {
     const gamesData = await Game.findAll({
@@ -124,6 +118,20 @@ router.get("/schedule", async (req, res) => {
 });
 
 router.get("/team/:id", async (req, res) => {
+  let isFollow = false;
+  console.log({loggedIN: req.session.loggedIn});
+  if (req.session.loggedIn) {
+    const following = await UserFollowing.findAll({
+      where: {
+        userId: req.session.user.id,
+        teamId: req.params.id
+      }
+    });
+    isFollow = following
+  }
+
+  console.log({isFollow});
+
   try {
     // Search the database for a dish with an id that matches params
     const teamData = await Team.findByPk(req.params.id);
@@ -142,6 +150,7 @@ router.get("/team/:id", async (req, res) => {
       user: req.session.user,
       loggedIn: req.session.loggedIn,
       team,
+      isFollow,
       teamGames: filteredTeamGames,
     });
   } catch (err) {

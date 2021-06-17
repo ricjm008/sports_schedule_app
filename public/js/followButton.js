@@ -1,3 +1,4 @@
+
 $(document).ready(function(){				
 
     $("#follow-button").click(function(){
@@ -31,3 +32,21 @@ $(document).ready(function(){
       }
     }); 
   });
+
+
+  const followButton = async (e) => {
+    e.preventDefault()
+    const teamId = parseInt(e.target.dataset.team)
+    const response = await fetch('/api/users/follow', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({teamId})
+    });
+    const data = await response.json()
+    if (response.ok) {
+      console.log('OK', data);
+    }
+  }
+  
+
+  document.querySelector('#follow-button').addEventListener("click", followButton)

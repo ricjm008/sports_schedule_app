@@ -30,6 +30,8 @@ const seedDatabase = async () => {
   await Game.bulkCreate(gameData);
   await TeamRecord.bulkCreate(teamRecordData);
 
+  await UserFollowing.bulkCreate([{userId: 1, teamId: 1}])
+
   process.exit(0);
 };
 

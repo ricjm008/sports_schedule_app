@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 // Requiring our models and passport as we've configured it
 const router = require("express").Router();
-const { User } = require("../../models");
+const { User, UserFollowing } = require("../../models");
 
 // Using the passport.authenticate middleware with our local strategy.
 // If the user has valid login credentials, send them to the members page.
@@ -86,5 +86,21 @@ router.get("/data", (req, res) => {
     res.json(req.session.user);
   }
 });
+
+router.post("/follow", async (req, res) => {
+  console.log("FOLLOWING!!!", req.body, req.session.user.id);
+//  try { 
+   const newFollowing = await UserFollowing.create({
+     userId: req.session.user.id, 
+     teamId: req.body.teamId
+   });
+   res.status(201).json(newFollowing)
+//  } catch (error) {
+//   res.status(500).send(error)
+//  }
+}) 
+
+
+
 
 module.exports = router;

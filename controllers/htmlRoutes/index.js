@@ -2,7 +2,7 @@
 const express = require("express");
 const { Op } = require("sequelize");
 const { Team, Game, TeamRecord } = require("../../models");
-// const gravatar = require("../api/gravatar");
+const gravatar = require("gravatar");
 
 // Requiring our custom middleware for checking if a user is logged in
 const withAuth = require("../../utils/withAuth");
@@ -61,6 +61,11 @@ router.get("/signup", (req, res) => {
 // Here we've add our isAuthenticated middleware to this route.
 // If a user who is not logged in tries to access this route they will be redirected to the signup page
 router.get("/dashboard", withAuth, async (req, res) => {
+  const url = gravatar.url(req.session.user.email, {
+    s: "40",
+    r: "pg",
+    d: "404",
+  });
   try {
     const pastGamesData = await Game.findAll({
       include: [{ all: true, nested: true }],
@@ -85,6 +90,7 @@ router.get("/dashboard", withAuth, async (req, res) => {
     // const pastGames = games.map((g) => g.date_time >= req.session.currentTime);
     res.render("dashboard", {
       user: req.session.user,
+      userAvatar: url,
       loggedIn: req.session.loggedIn,
       pastGames,
       upcomingGames,

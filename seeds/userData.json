@@ -2,7 +2,7 @@
   {
     "email":"admin@admin.com",
     "name":"admin",
-    "password":"",
+    "password":"password",
     "isAdmin":"true"
   },
   {

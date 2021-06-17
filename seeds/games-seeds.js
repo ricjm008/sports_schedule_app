@@ -1,7 +1,7 @@
 const gameData = [
     {
         h_team_id: 1,
-        date_time: "2021-6-26 15:00:00+09:30",
+        date_time: "2021-6-16 15:00:00+09:30",
         leagueId: 1
     },
     {

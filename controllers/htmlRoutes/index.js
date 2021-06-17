@@ -2,24 +2,26 @@
 const express = require("express");
 const { Op } = require("sequelize");
 const { Team, Game, TeamRecord } = require("../../models");
+const gravatar = require("gravatar");
+
 // Requiring our custom middleware for checking if a user is logged in
 const withAuth = require("../../utils/withAuth");
 const router = express.Router();
 
-router.get('/', async (req, res) => {
+router.get("/", async (req, res) => {
   try {
     const gamesData = await Game.findAll({
-      include: [{ all: true, nested: true }]
+      include: [{ all: true, nested: true }],
     });
-    const games = gamesData.map((g) => g.get({plain: true}));
-    res.render('index', {
-        user: req.session.user,
-        loggedIn: req.session.loggedIn,
-        games
+    const games = gamesData.map((g) => g.get({ plain: true }));
+    res.render("index", {
+      user: req.session.user,
+      loggedIn: req.session.loggedIn,
+      games,
     });
   } catch (err) {
     res.status(500).json(err);
-}
+  }
 });
 
 router.get("/login", (req, res) => {
@@ -58,43 +60,44 @@ router.get("/signup", (req, res) => {
 
 // Here we've add our isAuthenticated middleware to this route.
 // If a user who is not logged in tries to access this route they will be redirected to the signup page
-router.get('/dashboard',withAuth, async (req, res) => {
+router.get("/dashboard", withAuth, async (req, res) => {
+  const url = gravatar.url(req.session.user.email, {
+    s: "40",
+    r: "pg",
+    d: "404",
+  });
   try {
     const pastGamesData = await Game.findAll({
       include: [{ all: true, nested: true }],
-      order: [
-        ['date_time', 'ASC']
-      ],
-      where:{
+      order: [["date_time", "ASC"]],
+      where: {
         date_time: {
-          [Op.lt]: new Date()
-        }
-      }
+          [Op.lt]: new Date(),
+        },
+      },
     });
     const upcomingGamesData = await Game.findAll({
       include: [{ all: true, nested: true }],
-      order: [
-        ['date_time', 'ASC']
-      ],
-      where:{
+      order: [["date_time", "ASC"]],
+      where: {
         date_time: {
-          [Op.gte]: new Date()
-        }
-      }
+          [Op.gte]: new Date(),
+        },
+      },
     });
-    const pastGames = pastGamesData.map((g) => g.get({plain: true}));
-    const upcomingGames = upcomingGamesData.map((g) => g.get({plain: true}));
+    const pastGames = pastGamesData.map((g) => g.get({ plain: true }));
+    const upcomingGames = upcomingGamesData.map((g) => g.get({ plain: true }));
     // const pastGames = games.map((g) => g.date_time >= req.session.currentTime);
-    res.render('dashboard', {
-        user: req.session.user,
-        loggedIn: req.session.loggedIn,
-        pastGames,
-        upcomingGames,
-
+    res.render("dashboard", {
+      user: req.session.user,
+      userAvatar: url,
+      loggedIn: req.session.loggedIn,
+      pastGames,
+      upcomingGames,
     });
   } catch (err) {
     res.status(500).json(err);
-}
+  }
 });
 
 router.get("/team", (req, res) => {
@@ -104,47 +107,46 @@ router.get("/team", (req, res) => {
   });
 });
 
-router.get('/schedule', async (req, res) => {
+router.get("/schedule", async (req, res) => {
   try {
     const gamesData = await Game.findAll({
-      include: [{ all: true, nested: true }]
+      include: [{ all: true, nested: true }],
     });
-    const games = gamesData.map((g) => g.get({plain: true}));
-    res.render('schedule', {
-        user: req.session.user,
-        loggedIn: req.session.loggedIn,
-        games
+    const games = gamesData.map((g) => g.get({ plain: true }));
+    res.render("schedule", {
+      user: req.session.user,
+      loggedIn: req.session.loggedIn,
+      games,
     });
   } catch (err) {
     res.status(500).json(err);
-}
+  }
 });
 
-router.get('/team/:id', async (req, res) => {
-    try {
-      // Search the database for a dish with an id that matches params
-      const teamData = await Team.findByPk(req.params.id);
-      const teamGamesData = await Game.findAll({
-        include: [{ all: true, nested: true }]
-      });
-  
-      const teamGames = teamGamesData.map((g) => g.get({plain: true}))
-      const team = teamData.get({ plain: true });
-  
-      const filteredTeamGames = teamGames.filter(game => game.teams.some(t => t.id === team.id));
-  
-  
-        res.render('teampage', {
-          user: req.session.user,
-          loggedIn: req.session.loggedIn,
-          team,
-          teamGames: filteredTeamGames
-      });
-    } catch (err) {
-        res.status(500).json(err);
-    }
-  });
+router.get("/team/:id", async (req, res) => {
+  try {
+    // Search the database for a dish with an id that matches params
+    const teamData = await Team.findByPk(req.params.id);
+    const teamGamesData = await Game.findAll({
+      include: [{ all: true, nested: true }],
+    });
 
+    const teamGames = teamGamesData.map((g) => g.get({ plain: true }));
+    const team = teamData.get({ plain: true });
 
+    const filteredTeamGames = teamGames.filter((game) =>
+      game.teams.some((t) => t.id === team.id)
+    );
+
+    res.render("teampage", {
+      user: req.session.user,
+      loggedIn: req.session.loggedIn,
+      team,
+      teamGames: filteredTeamGames,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 
 module.exports = router;

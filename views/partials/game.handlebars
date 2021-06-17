@@ -3,13 +3,13 @@
     {{!-- picture --}}
     {{!-- left --}}
     <div class="flex flex-col items-center ">
-        <span class="inline-block mx-6 text-2xl text-center align-middle">{{teams.0.name}}</span>
+        <span class="inline-block mx-6 text-2xl text-center align-middle"><a href="/team/{{teams.0.id}}">{{teams.0.name}}</a></span>
         <span class="inline-block mx-6 text-2xl text-center align-middle">{{teams.0.teamrecord.result}}</span>
         {{!-- score --}}
     </div>
 
     {{!-- middle --}}
-    <div class="items-center justify-center ">
+    <div class="items-center justify-center">
         <p class="text-center">{{format_date date_time}} {{format_time date_time}}</p>
         {{!-- time date --}}
         <p class="text-3xl font-extrabold text-center">VS</p>
@@ -19,7 +19,7 @@
 
     {{!-- right --}}
     <div class="flex flex-col items-center ">
-        <span class="inline-block mx-6 text-2xl text-center align-middle">{{teams.1.name}}</span>
+        <span class="inline-block mx-6 text-2xl text-center align-middle"><a href="/team/{{teams.1.id}}">{{teams.1.name}}</a></span>
         <span class="inline-block mx-6 text-2xl text-center align-middle">{{teams.1.teamrecord.result}}</span>
         {{!-- score --}}
 

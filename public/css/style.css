@@ -15,15 +15,19 @@ a.signupLink:hover {
 }
 
 #follow-button {
-  color: #3399FF;
+  color: #3399ff;
   font-family: "Helvetica";
   font-size: 12pt;
   background-color: #ffffff;
   border: 1px solid;
-  border-color: #3399FF;
+  border-color: #3399ff;
   border-radius: 3px;
   width: 85px;
   height: 30px;
   cursor: hand;
-  text-align: center;		    
+  text-align: center;
+}
+
+.grid-modify {
+  grid-template-columns: 80px 160px 100px 160px 80px;
 }

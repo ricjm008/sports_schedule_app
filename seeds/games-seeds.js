@@ -1,32 +1,32 @@
 const gameData = [
     {
         h_team_id: 1,
-        date_time: "2021-6-16 15:00:00+09:30",
+        date_time: "2021-6-5 15:00:00+09:30",
         leagueId: 1
     },
     {
         h_team_id: 2,
-        date_time: "2021-6-26 17:00:00+09:30",
+        date_time: "2021-6-5 17:00:00+09:30",
         leagueId: 1
     },
     {
         h_team_id: 1,
-        date_time: "2021-7-3 15:00:00+09:30",
+        date_time: "2021-6-12 15:00:00+09:30",
         leagueId: 1
     },
     {
         h_team_id: 3,
-        date_time: "2021-7-3 17:00:00+09:30",
+        date_time: "2021-6-12 17:00:00+09:30",
         leagueId: 1
     },
     {
         h_team_id: 1,
-        date_time: "2021-7-10 15:00:00+09:30",
+        date_time: "2021-6-19 15:00:00+09:30",
         leagueId: 1
     },
     {
         h_team_id: 5,
-        date_time: "2021-7-10 17:00:00+09:30",
+        date_time: "2021-6-19 17:00:00+09:30",
         leagueId: 1
     },
     {

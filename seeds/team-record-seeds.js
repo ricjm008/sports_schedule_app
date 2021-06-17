@@ -1,41 +1,41 @@
 const teamRecordData = [
     {
-        result: null,
+        result: 10,
         gameId: 1,
         teamId: 1
     },
     {
-        result: null,
+        result: 14,
         gameId: 1,
         teamId: 4
     },
     {
-        result: null,
+        result: 7,
         gameId: 2,
         teamId: 2
     },
     {
-        result: null,
+        result: 12,
         gameId: 2,
         teamId: 5
     },
     {
-        result: null,
+        result: 10,
         gameId: 3,
         teamId: 1
     },
     {
-        result: null,
+        result: 11,
         gameId: 3,
         teamId: 2
     },
     {
-        result: null,
+        result: 21,
         gameId: 4,
         teamId: 3
     },
     {
-        result: null,
+        result: 14,
         gameId: 4,
         teamId: 4
     },

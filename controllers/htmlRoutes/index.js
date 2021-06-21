@@ -136,6 +136,8 @@ router.get("/schedule", async (req, res) => {
 
 router.get("/team/:id", async (req, res) => {
   let isFollow = false;
+  let isntFollow = true;
+
   console.log({loggedIN: req.session.loggedIn});
   if (req.session.loggedIn) {
     const following = await UserFollowing.findAll({
@@ -145,6 +147,8 @@ router.get("/team/:id", async (req, res) => {
       }
     });
     isFollow = following
+    isntFollow = !following
+
   }
 
   console.log({isFollow});
@@ -168,6 +172,7 @@ router.get("/team/:id", async (req, res) => {
       loggedIn: req.session.loggedIn,
       team,
       isFollow,
+      isntFollow,
       teamGames: filteredTeamGames,
     });
   } catch (err) {

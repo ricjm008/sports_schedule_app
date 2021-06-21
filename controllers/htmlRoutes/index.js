@@ -105,13 +105,16 @@ router.get("/dashboard", withAuth, async (req, res) => {
     });
     const pastGames = pastGamesData.map((g) => g.get({ plain: true }));
     const upcomingGames = upcomingGamesData.map((g) => g.get({ plain: true }));
+    const onePastGame = pastGames.slice(1, 2);
+    const oneUpcomingGame = upcomingGames.slice(0, 1);
+    console.log(onePastGame, oneUpcomingGame);
     // const pastGames = games.map((g) => g.date_time >= req.session.currentTime);
     res.render("dashboard", {
       user: req.session.user,
       userAvatar: url,
       loggedIn: req.session.loggedIn,
-      pastGames,
-      upcomingGames,
+      onePastGame,
+      oneUpcomingGame,
     });
   } catch (err) {
     res.status(500).json(err);

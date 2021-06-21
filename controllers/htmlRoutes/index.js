@@ -85,10 +85,16 @@ router.get("/dashboard", withAuth, async (req, res) => {
     d: "404",
   });
   try {
+    const userFollowingData = await UserFollowing.findAll({
+      where: {userId: req.session.user.id},
+      include: [{ all: true, nested: true }],
+    });
+    const userFollowingTeams = userFollowingData.map((g) => g.get({ plain: true }));
     const pastGamesData = await Game.findAll({
       include: [{ all: true, nested: true }],
       order: [["date_time", "ASC"]],
       where: {
+        //teams: { id: userFollowingTeams.teamId },
         date_time: {
           [Op.lt]: new Date(),
         },
@@ -103,18 +109,13 @@ router.get("/dashboard", withAuth, async (req, res) => {
         },
       },
     });
-    const userFollowingData = await UserFollowing.findAll({
-      where: {userId: req.session.user.id},
-      include: [{ all: true, nested: true }],
-    });
-    const userFollowingTeams = userFollowingData.map((g) => g.get({ plain: true }));
     const pastGames = pastGamesData.map((g) => g.get({ plain: true }));
     const filteredPastGames = pastGames.filter((game) =>
-      game.teams.some((t) => t.id === 2)//userFollowingTeams.teams[0].id)
+      game.teams.some((t) => t.id === 2 || t.id === 3)//userFollowingTeams.teams[0].id)
     );
     const upcomingGames = upcomingGamesData.map((g) => g.get({ plain: true }));
     const filteredUpcomingGames = upcomingGames.filter((game) =>
-      game.teams.some((t) => t.id === 2)//userFollowingTeams.teams[0].id)
+      game.teams.some((t) => t.id === 2 || t.id === 3)//userFollowingTeams.teams[0].id)
     );
     console.log(userFollowingTeams, filteredPastGames, filteredUpcomingGames);
     res.render("dashboard", {

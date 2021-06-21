@@ -103,11 +103,22 @@ router.get("/dashboard", withAuth, async (req, res) => {
         },
       },
     });
+    const userFollowingData = await UserFollowing.findAll({
+      where: {userId: req.session.user.id},
+      include: [{ all: true, nested: true }],
+    });
+    const userFollowingTeams = userFollowingData.map((g) => g.get({ plain: true }));
     const pastGames = pastGamesData.map((g) => g.get({ plain: true }));
+    const filteredPastGames = pastGames.filter((game) =>
+      game.teams.some((t) => t.id === userFollowingTeams.teamId)
+    );
     const upcomingGames = upcomingGamesData.map((g) => g.get({ plain: true }));
-    const onePastGame = pastGames.slice(1, 2);
-    const oneUpcomingGame = upcomingGames.slice(0, 1);
-    console.log(onePastGame, oneUpcomingGame);
+    const filteredUpcomingGames = upcomingGames.filter((game) =>
+      game.teams.some((t) => t.id === userFollowingTeams.teamId)
+    );
+    const onePastGame = filteredPastGames.slice(0, 1);
+    const oneUpcomingGame = filteredUpcomingGames.slice(0, 1);
+    console.log(userFollowingTeams, onePastGame, oneUpcomingGame);
     // const pastGames = games.map((g) => g.date_time >= req.session.currentTime);
     res.render("dashboard", {
       user: req.session.user,

@@ -15,14 +15,14 @@
   <div class="flex flex-wrap justify-center p-7 pt-4">
     <h2 class="w-full border-t-2 py-6 my-4 text-center text-xl">Results</h2>
     <div class="flex flex-wrap justify-center w-full">
-      {{#each pastGames}}
+      {{#each filteredPastGames}}
       {{> game}}
       {{/each}}
     </div>
 
     <h2 class="w-full border-t-2 py-6 my-4 text-center text-xl">Upcoming Games</h2>
     <div class="flex flex-wrap justify-center w-full">
-      {{#each upcomingGames}}
+      {{#each filteredUpcomingGames}}
       {{> game}}
       {{/each}}
     </div>

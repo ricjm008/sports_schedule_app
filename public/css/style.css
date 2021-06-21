@@ -23,22 +23,22 @@ a.signupLink:hover {
   border-color: #3399ff;
   border-radius: 3px;
   width: 85px;
-  height: 30px;
+  height: 35px;
   cursor: hand;
   text-align: center;
 }
 
 .following {
   color: #ffffff;
-  width: 130px;
-  left: -15px;
+  width: 85px;
+
   font-size: 12pt;
   font-family: "Helvetica";
   text-align: center;
   border: 1px solid;
   border-radius: 3px;
-  background-color: #2EB82E;
-  border-color: #2EB82E;
+  background-color: #2eb82e;
+  border-color: #2eb82e;
 }
 
 .grid-modify {

@@ -14,7 +14,7 @@ a.signupLink:hover {
   text-decoration: underline;
 }
 
-#follow-button {
+.follow-button {
   color: #3399ff;
   font-family: "Helvetica";
   font-size: 12pt;
@@ -26,6 +26,19 @@ a.signupLink:hover {
   height: 30px;
   cursor: hand;
   text-align: center;
+}
+
+.following {
+  color: #ffffff;
+  width: 130px;
+  left: -15px;
+  font-size: 12pt;
+  font-family: "Helvetica";
+  text-align: center;
+  border: 1px solid;
+  border-radius: 3px;
+  background-color: #2EB82E;
+  border-color: #2EB82E;
 }
 
 .grid-modify {

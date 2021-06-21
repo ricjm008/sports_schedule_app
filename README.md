@@ -26,10 +26,11 @@ Create an account on the applications site, find a team and follow them!
 ## Questions:
 
 For any further questions -
-Contact the team: peterbruckner08@gmail.com
-                  jaredrice91@gmail.com
+Contact the team: peterbruckner08@gmail.com\
+                  jaredrice91@gmail.com\
                   
-Github Profile: https://github.com/Brucksta
-                https://github.com/ricjm008
+Github Profile: https://github.com/Brucksta\
+                https://github.com/ricjm00\
+                https://github.com/tronglongphung\
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)

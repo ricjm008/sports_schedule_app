@@ -53,7 +53,11 @@
   document.querySelector('.follow-button').addEventListener("click", followButton)
 
   document.querySelector('.follow-button').addEventListener("click", (e) => {
+   if (!document.querySelector('.following')) {
     document.querySelector('.follow-button').innerText = "Following";
+   } else if (document.querySelector('.following')) {
+    document.querySelector('.follow-button').innerText = "+ Follow"
+   }
     following.classList.toggle('following')
   })
 
